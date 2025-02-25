@@ -1,14 +1,18 @@
 <div class="flex-row">
   <div class="flex-1">
     <mat-card class="home-card">
-      <mat-card-header>
-        <mat-card-title>
-          Home
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        This is a home page! It doesn't do anything!
-      </mat-card-content>
+
+
+      <div style="display: flex; justify-content: center;">
+        <button mat-fab extended color="warn" style="color: rgb(255, 255, 255);" routerLink="/about">
+          Host a game
+        </button>
+
+        <button mat-fab extended color="primary" style="color: rgb(255, 255, 255);" routerLink="/join">
+          Join a game
+        </button>
+      </div>
+
     </mat-card>
   </div>
 </div>

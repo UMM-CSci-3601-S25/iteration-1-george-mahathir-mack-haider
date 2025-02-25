@@ -11,6 +11,10 @@ import { CompanyListComponent } from './company-list/company-list.component';
 // 'users/new'; the router would just think that the string 'new' is a user ID.
 const routes: Routes = [
   {path: '', component: HomeComponent, title: 'Home'},
+  // {path: 'host', component: HomeComponent, title: 'Host'},
+  // {path: 'player', component: HomeComponent, title: 'Player'},
+
+
   {path: 'users', component: UserListComponent, title: 'Users'},
   {path: 'users/new', component: AddUserComponent, title: 'Add User'},
   {path: 'users/:id', component: UserProfileComponent, title: 'User Profile'},
