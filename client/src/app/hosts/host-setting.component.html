@@ -1,13 +1,25 @@
 <div class="flex-row">
   <div class="flex-1">
 
+      <!-- add slider to determine how many rounds there are -->
+    <mat-card class="host-setting-card">
+
+      <mat-form-field class="input-field">
+
+        <mat-label>Number Of Rounds</mat-label>
+        <input matInput data-test="NumberRoundInput" type="number" placeholder="Number of Rounds"
+          min="0" max="20">
+
+      </mat-form-field>
+      </mat-card>
 
     <mat-card class="host-setting-card">
+
       <mat-form-field class="example-full-width">
-      <mat-label>add a prompt card</mat-label>
+      <mat-label>Add A Prompt Card</mat-label>
       <input matInput #message placeholder="placeholder...">
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="submitPrompt(message.value)">Submit Prompt</button>
+      <button mat-raised-button color="primary" (click)="submitPrompt()">Submit Prompt</button>
     </mat-card>
 
 
