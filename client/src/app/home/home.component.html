@@ -5,16 +5,18 @@
 
 
       <mat-grid-tile>
-        <button mat-fab extended color="warn" style="color: rgb(255, 255, 255);" routerLink="/about" [routerLink]="['/host']" routerLinkActive="HostJoinButton" >
-        Host a game
-      </button>
+        <button mat-fab extended color="warn" style="color: rgb(255, 255, 255); width: 500px; height: 300px;" routerLink="/about" [routerLink]="['/host']" routerLinkActive="HostJoinButton">
+          <mat-icon matListItemIcon>menu</mat-icon>
+          Host a game
+        </button>
+      </mat-grid-tile>
 
-    </mat-grid-tile>
       <mat-grid-tile>
-        <button mat-fab extended color="primary" style="color: rgb(255, 255, 255);" routerLink="/join" [routerLink]="['/player']" routerLinkActive="PlayerJoinButton">
-        Join a game
-      </button>
-    </mat-grid-tile>
+        <button mat-fab extended color="primary" style="color: rgb(255, 255, 255); width: 500px; height: 300px;;" routerLink="/join" [routerLink]="['/player']" routerLinkActive="PlayerJoinButton">
+          <mat-icon matListItemIcon>videogame_asset</mat-icon>
+          Join a game
+        </button>
+      </mat-grid-tile>
 
 
     </mat-grid-list>
