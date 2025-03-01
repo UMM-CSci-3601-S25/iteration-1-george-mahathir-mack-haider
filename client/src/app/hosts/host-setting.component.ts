@@ -34,5 +34,6 @@ export class HostSettingsComponent {
 
   submitPrompt(message: string): void {
     console.log('Prompt submitted:', message);
+
   }
 }
