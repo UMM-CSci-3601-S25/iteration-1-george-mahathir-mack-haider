@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/FSSSBftc)
-# CSCI 3601 Iteration Template <!-- omit in toc -->
+# humanity against apples <!-- omit in toc -->
 
 - [Development](#development)
   - [Common commands](#common-commands)
@@ -63,7 +63,7 @@ Additional resources on tooling and techniques are in [the resources list](RESOU
 
 ## Changing the name
 
-The project by default has the name "CSCI 3601 Iteration Template". There are a few places you need to change to make this the name you want:
+The project by default has the name "humanity against apples". There are a few places you need to change to make this the name you want:
 
 - The title in this README.md
 - [`client/src/app/app.component.ts`](client/src/app/app.component.ts)
