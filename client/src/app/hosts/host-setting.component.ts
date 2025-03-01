@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
+import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
   selector: 'app-host-settings',
@@ -22,9 +23,18 @@ import { MatIcon } from '@angular/material/icon';
     MatButtonModule,
     MatOptionModule,
     MatIcon,
+    MatSliderModule,
+
   ]
 })
 export class HostSettingsComponent {
+
+
+
+
+
+
+
 
   addPromptForm = new FormGroup({
     prompt: new FormControl('', Validators.compose([
