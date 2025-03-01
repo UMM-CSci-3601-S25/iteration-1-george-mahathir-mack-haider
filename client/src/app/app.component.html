@@ -11,6 +11,21 @@
         Home
       </a>
 
+      <!-- -->
+      <a mat-list-item routerLink="/host" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
+        <mat-icon matListItemIcon>menu</mat-icon>
+        Host
+      </a>
+
+      <a mat-list-item routerLink="/player" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
+        <mat-icon matListItemIcon>videogame_asset</mat-icon>
+        player
+      </a>
+
+      <!-- -->
+
+
+
       <a mat-list-item routerLink="/users" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
         <mat-icon matListItemIcon>people</mat-icon>
         Users

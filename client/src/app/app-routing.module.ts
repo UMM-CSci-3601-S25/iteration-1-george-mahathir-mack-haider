@@ -7,6 +7,7 @@ import { UserProfileComponent } from './users/user-profile.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { HostComponent } from './hosts/host-list.component';
 import { PlayerComponent } from './players/player-list.component';
+import { HostSettingsComponent } from './hosts/host-setting.component';
 
 // Note that the 'users/new' route needs to come before 'users/:id'.
 // If 'users/:id' came first, it would accidentally catch requests to
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent, title: 'Home'},
   {path: 'host', component: HostComponent, title: 'Host'},
   {path: 'player', component: PlayerComponent, title: 'Player'},
-
+  {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
 
   {path: 'users', component: UserListComponent, title: 'Users'},
   {path: 'users/new', component: AddUserComponent, title: 'Add User'},
