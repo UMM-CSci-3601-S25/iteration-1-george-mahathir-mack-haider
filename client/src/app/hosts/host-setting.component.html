@@ -13,14 +13,18 @@
       </mat-form-field>
       </mat-card>
 
+
+
     <mat-card class="host-setting-card">
 
       <mat-form-field class="example-full-width">
       <mat-label>Add A Prompt Card</mat-label>
-      <input matInput #message placeholder="placeholder...">
+      <input matInput #message placeholder="placeholder..." [(ngModel)]="hostPrompt">
       </mat-form-field>
+
       <button mat-raised-button color="primary" (click)="submitPrompt()">Submit Prompt</button>
     </mat-card>
+
 
 
     <!-- button that takes user back to host website -->
