@@ -10,7 +10,7 @@ import { PlayerComponent } from './players/player-list.component';
 import { HostSettingsComponent } from './hosts/host-setting.component';
 import { GameComponent } from './game/game.component';
 
-const randomString: string = generateRandomString(5); // Generates a 5-character random string
+// const randomString: string = generateRandomString(5); // Generates a 5-character random string
 
 // Note that the 'users/new' route needs to come before 'users/:id'.
 // If 'users/:id' came first, it would accidentally catch requests to
@@ -34,11 +34,11 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-function generateRandomString(length: number): string {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
+// function generateRandomString(length: number): string {
+//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//   let result = '';
+//   for (let i = 0; i < length; i++) {
+//     result += characters.charAt(Math.floor(Math.random() * characters.length));
+//   }
+//   return result;
+// }
