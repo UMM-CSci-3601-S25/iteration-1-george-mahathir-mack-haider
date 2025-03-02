@@ -24,11 +24,3 @@ export class HomeComponent {
 
 }
 
-export class Colors {
-  purple: string = '#800080';
-  blue: string = '#0000FF';
-  green: string = '#008000';
-  red: string = '#FF0000';
-  black: string = '#000000';
-  white: string = '#FFFFFF';
-}

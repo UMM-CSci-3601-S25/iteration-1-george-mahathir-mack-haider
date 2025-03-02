@@ -22,13 +22,14 @@ import { MatIconModule } from '@angular/material/icon';
 
 export class GameComponent {
 
+  generateRandomString(length: number): string {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  }
+
 }
 
-export class Colors {
-  purple: string = '#800080';
-  blue: string = '#0000FF';
-  green: string = '#008000';
-  red: string = '#FF0000';
-  black: string = '#000000';
-  white: string = '#FFFFFF';
-}

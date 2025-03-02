@@ -11,10 +11,12 @@
         </mat-card-header>
         <mat-grid-list cols="1" rowHeight="2:1">
           <mat-grid-tile>
+            
             <mat-form-field>
               <input matInput placeholder="join a game">
             </mat-form-field>
-            <button mat-fab extended routerLink="/about" [routerLink]="['/host']" routerLinkActive="HostJoinButton">
+
+            <button mat-fab extended routerLink="/about" [routerLink]="['/game/temporary']" routerLinkActive="HostJoinButton">
               <mat-icon>add</mat-icon>
               Join
             </button>

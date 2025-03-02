@@ -1,5 +1,8 @@
 package umm3601.host;
 
+// import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 // import static com.mongodb.client.model.Filters.and;
 // import static com.mongodb.client.model.Filters.eq;
 // import static com.mongodb.client.model.Filters.regex;
@@ -31,6 +34,8 @@ import io.javalin.http.HttpStatus;
 import umm3601.Controller;
 
 public class HostController implements Controller {
+  private static final String API_PROMPTS = "/api/prompts";
+
 
   private final JacksonMongoCollection<Host> hostCollection;
 
@@ -41,6 +46,15 @@ public class HostController implements Controller {
         Host.class,
         UuidRepresentation.STANDARD);
   }
+
+  public void getPrompts(Context ctx) {
+    ArrayList<Host> prompts = hostCollection.find().into(new ArrayList<>());
+    ctx.json(prompts);
+  }
+
+
+
+
 
   public void addNewPrompt(Context ctx) {
 
@@ -58,6 +72,11 @@ public class HostController implements Controller {
 
   @Override
   public void addRoutes(Javalin server) {
-    server.post("/api/prompts", this::addNewPrompt);
+
+    // Get all prompts
+    server.get(API_PROMPTS, this::getPrompts);
+
+    // Add new prompt
+    server.post(API_PROMPTS, this::addNewPrompt);
   }
 }
