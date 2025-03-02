@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-host-settings',
@@ -24,16 +25,13 @@ import { MatSliderModule } from '@angular/material/slider';
     MatOptionModule,
     MatIcon,
     MatSliderModule,
+    MatListModule,
 
   ]
 })
 export class HostSettingsComponent {
 
-
-
-
-
-
+  hostPrompt = signal<string | undefined>(undefined);
 
 
   addPromptForm = new FormGroup({
@@ -86,7 +84,8 @@ export class HostSettingsComponent {
       this.snackBar.open(`Prompt added: ${prompt}`, null, { duration: 2000 });
       this.addPromptForm.reset();
     } else {
-      this.snackBar.open('Please correct the errors in the form', 'OK', { duration: 5000 });
+      const prompt = this.addPromptForm.value.prompt;
+      this.snackBar.open(`Please correct the errors in the form: ${prompt}`, 'OK', { duration: 5000 });
     }
   }
 }

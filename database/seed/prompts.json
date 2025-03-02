@@ -1,0 +1,50 @@
+[
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e8720f"
+    },
+    "prompt": "______ is a slippery slope that leads to ______."
+  },
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e87210"
+    },
+    "prompt": "______: kid-tested, mother-approved."
+  },
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e87211"
+    },
+    "prompt": "______: Mwah."
+  },
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e87212"
+    },
+    "prompt": "______. High five, bro."
+  },
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e87213"
+    },
+    "prompt": "A romantic, candlelit dinner would be incomplete without ______."
+  },
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e87214"
+    },
+    "prompt": "A successful job interview begins with a firm handshake and ends with ______."
+  },
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e87215"
+    },
+    "prompt": "And the Academy Award for ______ goes to ______."
+  },
+  {
+    "_id": {
+      "$oid": "58af3a600343927e48e87216"
+    },
+    "prompt": "And today’s soup is Cream of ______."
+  }
+]
