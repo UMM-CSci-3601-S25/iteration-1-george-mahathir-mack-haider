@@ -5,7 +5,7 @@
         height: 200px !important;
       }
     </style>
-      <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-list cols="2" rowHeight="2:1">
 
         <mat-grid-tile>
           <button mat-fab extended color="warn" style="color: rgb(255, 255, 255); width: 200px; height: 200px;" [routerLink]="['/host/settings']">
@@ -13,17 +13,15 @@
             Settings
           </button>
         </mat-grid-tile>
-
-
         <mat-grid-tile>
-          <mat-card>
-            <mat-card-content>
-              <div>{{generateRandomString() }}</div>
-            </mat-card-content>
-          </mat-card>
+          <button mat-fab extended color="primary" style="color: rgb(255, 255, 255); width: 200px; height: 200px;" [routerLink]="['/host/lobby']">
+            <mat-icon matListItemIcon>group</mat-icon>
+            Create Game
+          </button>
         </mat-grid-tile>
 
 
+<!--
         <mat-grid-tile>
           <mat-card>
             <mat-card-content>
@@ -33,9 +31,7 @@
 
         </mat-grid-tile>
       </mat-grid-list>
-
-
-
+-->
           <!-- main website for host to look at to start a game -->
 
 
