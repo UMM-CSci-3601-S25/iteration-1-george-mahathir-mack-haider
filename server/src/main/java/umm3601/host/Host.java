@@ -1,7 +1,5 @@
 package umm3601.host;
 
-
-
 import org.mongojack.Id;
 import org.mongojack.ObjectId;
 
@@ -28,6 +26,11 @@ public class Host {
   @Override
   public int hashCode() {
     return _id.hashCode();
+  }
+
+  @Override
+  public String toString() {
+    return text;
   }
 
 }
