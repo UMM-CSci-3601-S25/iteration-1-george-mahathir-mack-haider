@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatListModule } from '@angular/material/list';
-
+import { RouterLink } from '@angular/router';
+import { HostService } from './host.service';
 @Component({
   selector: 'app-host-settings',
   templateUrl: './host-setting.component.html',
@@ -26,22 +27,32 @@ import { MatListModule } from '@angular/material/list';
     MatIcon,
     MatSliderModule,
     MatListModule,
+    RouterLink,
 
   ]
 })
 export class HostSettingsComponent {
 
+
+
+  // Define a signal to hold the host prompt, initially undefined
   hostPrompt = signal<string | undefined>(undefined);
 
 
+  // Define a form group for adding a prompt with validation rules
   addPromptForm = new FormGroup({
     prompt: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(200)
+      Validators.required, // Prompt is required
+      Validators.minLength(5), // Minimum length of 5 characters
+      Validators.maxLength(200) // Maximum length of 200 characters
     ]))
   });
 
+
+
+
+
+  // Define validation messages for the prompt form control
   readonly addPromptValidationMessages = {
     prompt: [
       { type: 'required', message: 'Prompt is required' },
@@ -49,16 +60,30 @@ export class HostSettingsComponent {
     ]
   };
 
+
+
+
+
+  // Inject dependencies: MatSnackBar for displaying messages and Router for navigation
   constructor(
+    private hostService: HostService,
     private snackBar: MatSnackBar,
     private router: Router) {
   }
 
+
+
+
+  // Check if a form control has an error and has been touched or is dirty
   formControlHasError(controlName: string): boolean {
     return this.addPromptForm.get(controlName).invalid &&
       (this.addPromptForm.get(controlName).dirty || this.addPromptForm.get(controlName).touched);
   }
 
+
+
+
+  // Get the error message for a specific form control based on validation rules
   getErrorMessage(name: keyof typeof this.addPromptValidationMessages): string {
     for (const { type, message } of this.addPromptValidationMessages[name]) {
       if (this.addPromptForm.get(name).hasError(type)) {
@@ -68,24 +93,31 @@ export class HostSettingsComponent {
     return 'Unknown error';
   }
 
-  /**
-   * Handles the submission of the prompt form.
-   *
-   * This method checks if the form is valid. If valid, it retrieves the prompt value from the form,
-   * logs the prompt to the console, displays a snackbar notification indicating the prompt was added,
-   * and then resets the form. If the form is not valid, it displays a snackbar notification asking the user
-   * to correct the errors in the form.
-   */
 
+
+
+  // Handle form submission
   submitPrompt() {
-    if (this.addPromptForm.valid) {
-      const prompt = this.addPromptForm.value.prompt;
-      console.log('Prompt submitted:', prompt);
-      this.snackBar.open(`Prompt added: ${prompt}`, null, { duration: 2000 });
-      this.addPromptForm.reset();
-    } else {
-      const prompt = this.addPromptForm.value.prompt;
-      this.snackBar.open(`Please correct the errors in the form: ${prompt}`, 'OK', { duration: 5000 });
-    }
+    console.log(this.addPromptForm.value);
+    this.hostService.addPrompt(this.addPromptForm.value).subscribe({
+      next: (newId) => {
+        this.snackBar.open(
+          `Prompt added with ID: ${newId}`,
+          null,
+          { duration: 2000 }
+        )
+      },
+
+      error: error => {
+        this.snackBar.open(
+          `Error adding prompt: ${error.message}`,
+          'OK',
+          { duration: 5000 }
+        );
+      },
+
+
+    });
   }
+
 }

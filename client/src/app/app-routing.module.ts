@@ -10,7 +10,6 @@ import { PlayerComponent } from './players/player-list.component';
 import { HostSettingsComponent } from './hosts/host-setting.component';
 import { GameComponent } from './game/game.component';
 
-// const randomString: string = generateRandomString(5); // Generates a 5-character random string
 
 // Note that the 'users/new' route needs to come before 'users/:id'.
 // If 'users/:id' came first, it would accidentally catch requests to
@@ -20,7 +19,9 @@ const routes: Routes = [
   {path: 'host', component: HostComponent, title: 'Host'},
   {path: 'player', component: PlayerComponent, title: 'Player'},
   {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
-  {path: 'game', component: GameComponent, title: 'randomString'},
+
+  {path: 'game', component: GameComponent, title: 'Game'},
+  {path: 'game/temporary', component: GameComponent, title: 'Temporary Game'},
 
   {path: 'users', component: UserListComponent, title: 'Users'},
   {path: 'users/new', component: AddUserComponent, title: 'Add User'},
@@ -34,11 +35,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-// function generateRandomString(length: number): string {
-//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//   let result = '';
-//   for (let i = 0; i < length; i++) {
-//     result += characters.charAt(Math.floor(Math.random() * characters.length));
-//   }
-//   return result;
-// }
