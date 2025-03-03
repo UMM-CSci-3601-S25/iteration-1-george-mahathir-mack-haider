@@ -1,11 +1,28 @@
 <div class="flex-row">
     <div class="flex-1">
-
-      <mat-card class="search-card">
+      <style>
+        mat-grid-tile {
+          height: 200px !important;
+        }
+      </style>
+      <mat-card appearance = "raised">
         <mat-card-header>
-          <mat-card-title class="player-title">Players</mat-card-title>
+          <mat-card-title>Join a Game</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
+        <mat-grid-list cols="1" rowHeight="2:1">
+          <mat-grid-tile>
+            
+            <mat-form-field>
+              <input matInput placeholder="join a game">
+            </mat-form-field>
+
+            <button mat-fab extended routerLink="/about" [routerLink]="['/game/temporary']" routerLinkActive="HostJoinButton">
+              <mat-icon>add</mat-icon>
+              Join
+            </button>
+          </mat-grid-tile>
+
+
 
           <!-- main website for player to look at to join a game -->
 

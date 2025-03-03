@@ -8,6 +8,8 @@ import { CompanyListComponent } from './company-list/company-list.component';
 import { HostComponent } from './hosts/host-list.component';
 import { PlayerComponent } from './players/player-list.component';
 import { HostSettingsComponent } from './hosts/host-setting.component';
+import { GameComponent } from './game/game.component';
+
 
 // Note that the 'users/new' route needs to come before 'users/:id'.
 // If 'users/:id' came first, it would accidentally catch requests to
@@ -17,6 +19,9 @@ const routes: Routes = [
   {path: 'host', component: HostComponent, title: 'Host'},
   {path: 'player', component: PlayerComponent, title: 'Player'},
   {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
+
+  {path: 'game', component: GameComponent, title: 'Game'},
+  {path: 'game/temporary', component: GameComponent, title: 'Temporary Game'},
 
   {path: 'users', component: UserListComponent, title: 'Users'},
   {path: 'users/new', component: AddUserComponent, title: 'Add User'},
@@ -29,3 +34,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
