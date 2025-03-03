@@ -50,8 +50,6 @@ export class HostSettingsComponent {
 
 
 
-
-
   // Define validation messages for the prompt form control
   readonly addPromptValidationMessages = {
     prompt: [
@@ -62,15 +60,12 @@ export class HostSettingsComponent {
 
 
 
-
-
   // Inject dependencies: MatSnackBar for displaying messages and Router for navigation
   constructor(
     private hostService: HostService,
     private snackBar: MatSnackBar,
     private router: Router) {
   }
-
 
 
 
@@ -94,8 +89,6 @@ export class HostSettingsComponent {
   }
 
 
-
-
   // Handle form submission
   submitPrompt() {
     console.log(this.addPromptForm.value);
@@ -105,7 +98,8 @@ export class HostSettingsComponent {
           `Prompt added with ID: ${newId}`,
           null,
           { duration: 2000 }
-        )
+        );
+        this.router.navigate(['/prompts/', newId]);
       },
 
       error: error => {

@@ -54,8 +54,6 @@ public class HostController implements Controller {
 
 
 
-
-
   public void addNewPrompt(Context ctx) {
 
     String body = ctx.body();
