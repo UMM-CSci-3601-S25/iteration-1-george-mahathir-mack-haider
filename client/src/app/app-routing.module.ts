@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'host', component: HostComponent, title: 'Host'},
   {path: 'player', component: PlayerComponent, title: 'Player'},
   {path: 'prompts', component: HostSettingsComponent, title: 'Host Settings'},
-  // {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
+  {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
 
   {path: 'game', component: GameComponent, title: 'Game'},
   {path: 'game/temporary', component: GameComponent, title: 'Temporary Game'},
