@@ -1,28 +1,62 @@
-<div class="flex-row">
-    <div class="flex-1">
-      <style>
-        mat-grid-tile {
-          height: 200px !important;
-        }
-      </style>
-      <mat-card appearance = "raised">
-        <mat-card-header>
-          <mat-card-title>Join a Game</mat-card-title>
-        </mat-card-header>
-        <mat-grid-list cols="1" rowHeight="2:1">
-          <mat-grid-tile>
-            
-            <mat-form-field>
-              <input matInput placeholder="join a game">
-            </mat-form-field>
+<div class="container">
+  <div class="content">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Join a Game</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Join a game">
+        </mat-form-field>
+        <div class="button-container">
+          <button mat-fab extended color="primary" [routerLink]="['/game/temporary']" routerLinkActive="HostJoinButton">
+            <mat-icon>add</mat-icon>
+            Join
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <button mat-fab class="add-user-fab" matTooltip="Go back" matTooltipPosition="left" routerLink="/" style="position: absolute; bottom: 100px; right: 100px;">
+      <mat-icon aria-label="go back">subdirectory_arrow_left</mat-icon>
+    </button>
+  </div>
+</div>
 
-            <button mat-fab extended routerLink="/about" [routerLink]="['/game/temporary']" routerLinkActive="HostJoinButton">
-              <mat-icon>add</mat-icon>
-              Join
-            </button>
-          </mat-grid-tile>
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #e770ff;
+  }
 
+  .content {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .card {
+    width: 100%;
+  }
 
-          <!-- main website for player to look at to join a game -->
+  .full-width {
+    width: 100%;
+  }
 
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .add-user-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+</style>
