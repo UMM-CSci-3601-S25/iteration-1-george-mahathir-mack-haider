@@ -1,5 +1,10 @@
 [
-    {
-        
+    {   
+    "_id": {
+        "$oid": "58af3a600343927e48e8720f"
+      },
+      "text": "______ is a slippery slope that leads to ______."
+       
+
     }
 ]
