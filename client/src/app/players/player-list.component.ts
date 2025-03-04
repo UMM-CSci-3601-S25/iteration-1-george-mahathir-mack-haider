@@ -35,6 +35,6 @@ import { RouterLink } from '@angular/router';
     MatGridListModule,
   ],
 })
-export class PlayerComponent {
+export class AddPlayerComponent {
 
 }
