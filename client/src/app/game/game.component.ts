@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+//import { RouterLink } from '@angular/router';
 import { MatGridListModule} from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -15,7 +15,6 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
-    RouterLink,
     MatIconModule,
   ]
 })
