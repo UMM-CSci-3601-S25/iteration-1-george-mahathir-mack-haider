@@ -1,29 +1,36 @@
 <div class="flex-row">
   <div class="flex-1">
-
+    <form [formGroup]="addPromptForm" (ngSubmit)="submitPrompt();">
       <!-- add slider to determine how many rounds there are -->
-    <mat-card class="host-setting-card">
+      <mat-card class="host-setting-card">
+        <mat-card-content>
+          <mat-form-field class="input-field">
+            <mat-label>Number Of Rounds</mat-label>
+            <input matInput data-test="NumberRoundInput" type="number" placeholder="Number of Rounds"
+            min="0" max="20">
+          </mat-form-field>
 
-      <mat-form-field class="input-field">
+          <mat-form-field class="example-full-width">
+            <mat-label>Add A Prompt Card</mat-label>
+            <input matInput formControlName="text" #message placeholder="placeholder..." required>
+            @if (formControlHasError('text')) {
+              <mat-error data-test="textError">
+              {{getErrorMessage('text')}}
+              </mat-error>
+            }
+          </mat-form-field>
 
-        <mat-label>Number Of Rounds</mat-label>
-        <input matInput data-test="NumberRoundInput" type="number" placeholder="Number of Rounds"
-          min="0" max="20">
-
-      </mat-form-field>
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="!addPromptForm.valid"
+            type="submit"
+            data-test="confirmAddPromptButton"
+            >
+            Submit Prompt
+          </button>
+        </mat-card-content>
       </mat-card>
-
-
-
-    <mat-card class="host-setting-card">
-
-      <mat-form-field class="example-full-width">
-      <mat-label>Add A Prompt Card</mat-label>
-      <input matInput #message placeholder="placeholder..." [(ngModel)]="hostPrompt">
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" (click)="submitPrompt()">Submit Prompt</button>
-    </mat-card>
 
 
 
@@ -32,7 +39,6 @@
     <button mat-fab class="add-user-fab" matTooltip="go back" matTooltipPosition="left" routerLink="/host" style="position: absolute; bottom: 50px; right: 50px;">
       <mat-icon aria-label="go back">subdirectory_arrow_left</mat-icon>
     </button>
-
-
+    </form>
   </div>
 </div>
