@@ -1,4 +1,4 @@
-package umm3601.host;
+package umm3601.prompt;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -34,12 +34,13 @@ import com.mongodb.client.MongoDatabase;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import io.javalin.validation.BodyValidator;
+
 // import io.javalin.validation.ValidationException;
 import io.javalin.json.JavalinJackson;
 
-class HostControllerSpec {
+class PromptControllerSpec {
 
-  private HostController hostController;
+  private PromptController promptController;
 
   private static MongoClient mongoClient;
   private static MongoDatabase db;
@@ -76,7 +77,7 @@ class HostControllerSpec {
     MongoCollection<Document> promptDocuments = db.getCollection("prompts");
     promptDocuments.drop();
 
-    hostController = new HostController(db);
+    promptController = new PromptController(db);
   }
 
   // @Test
@@ -88,16 +89,16 @@ class HostControllerSpec {
 
   @Test
   void addNewPrompt() throws IOException {
-    Host newPrompt = new Host();
+    Prompt newPrompt = new Prompt();
     newPrompt.text = "Test Prompt";
 
-    String newPromptJson = javalinJackson.toJsonString(newPrompt, Host.class);
+    String newPromptJson = javalinJackson.toJsonString(newPrompt, Prompt.class);
 
-    when(ctx.bodyValidator(Host.class))
-        .thenReturn(new BodyValidator<>(newPromptJson, Host.class,
-            () -> javalinJackson.fromJsonString(newPromptJson, Host.class)));
+    when(ctx.bodyValidator(Prompt.class))
+        .thenReturn(new BodyValidator<>(newPromptJson, Prompt.class,
+            () -> javalinJackson.fromJsonString(newPromptJson, Prompt.class)));
 
-    hostController.addNewPrompt(ctx);
+    promptController.addNewPrompt(ctx);
     verify(ctx).json(mapCaptor.capture());
 
     verify(ctx).status(HttpStatus.CREATED);

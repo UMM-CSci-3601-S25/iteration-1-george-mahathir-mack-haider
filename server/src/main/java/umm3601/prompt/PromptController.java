@@ -1,4 +1,4 @@
-package umm3601.host;
+package umm3601.prompt;
 
 // import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -33,22 +33,22 @@ import io.javalin.http.HttpStatus;
 // import io.javalin.http.NotFoundResponse;
 import umm3601.Controller;
 
-public class HostController implements Controller {
+public class PromptController implements Controller {
   private static final String API_PROMPTS = "/api/prompts";
 
 
-  private final JacksonMongoCollection<Host> hostCollection;
+  private final JacksonMongoCollection<Prompt> promptCollection;
 
-  public HostController(MongoDatabase database) {
-    hostCollection = JacksonMongoCollection.builder().build(
+  public PromptController(MongoDatabase database) {
+    promptCollection = JacksonMongoCollection.builder().build(
         database,
         "prompts",
-        Host.class,
+        Prompt.class,
         UuidRepresentation.STANDARD);
   }
 
   public void getPrompts(Context ctx) {
-    ArrayList<Host> prompts = hostCollection.find().into(new ArrayList<>());
+    ArrayList<Prompt> prompts = promptCollection.find().into(new ArrayList<>());
     ctx.json(prompts);
   }
 
@@ -57,15 +57,15 @@ public class HostController implements Controller {
   public void addNewPrompt(Context ctx) {
 
     String body = ctx.body();
-    Host newPrompt = ctx.bodyValidator(Host.class)
+    Prompt newPrompt = ctx.bodyValidator(Prompt.class)
       .check(prm -> prm.text != null && prm.text.length() > 0,
         "Prompt must have a non-empty value; body was " + body)
       .get();
 
-    hostCollection.insertOne(newPrompt);
+    promptCollection.insertOne(newPrompt);
 
-    ctx.status(HttpStatus.CREATED);
     ctx.json(Map.of("id", newPrompt._id));
+    ctx.status(HttpStatus.CREATED);
   }
 
   @Override

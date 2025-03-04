@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -36,14 +36,14 @@ export class HostSettingsComponent {
 
 
   // Define a signal to hold the host prompt, initially undefined
-  hostPrompt = signal<string | undefined>(undefined);
+  //hostPrompt = signal<string | undefined>(undefined);
 
 
   // Define a form group for adding a prompt with validation rules
   addPromptForm = new FormGroup({
-    prompt: new FormControl('', Validators.compose([
+    text: new FormControl('', Validators.compose([
       Validators.required, // Prompt is required
-      Validators.minLength(5), // Minimum length of 5 characters
+      Validators.minLength(2), // Minimum length of 3 characters
       Validators.maxLength(200) // Maximum length of 200 characters
     ]))
   });
@@ -52,9 +52,10 @@ export class HostSettingsComponent {
 
   // Define validation messages for the prompt form control
   readonly addPromptValidationMessages = {
-    prompt: [
-      { type: 'required', message: 'Prompt is required' },
-      { type: 'maxlength', message: 'Prompt cannot be more than 200 characters long' }
+    text: [
+      { type: 'required', message: 'Prompt text is required' },
+      { type: 'minlength', message: 'Prompt must be at least 2 characters'},
+      { type: 'maxlength', message: 'Prompt text cannot be more than 200 characters long' }
     ]
   };
 
@@ -79,9 +80,9 @@ export class HostSettingsComponent {
 
 
   // Get the error message for a specific form control based on validation rules
-  getErrorMessage(name: keyof typeof this.addPromptValidationMessages): string {
-    for (const { type, message } of this.addPromptValidationMessages[name]) {
-      if (this.addPromptForm.get(name).hasError(type)) {
+  getErrorMessage(controlName: keyof typeof this.addPromptValidationMessages): string {
+    for (const { type, message } of this.addPromptValidationMessages[controlName]) {
+      if (this.addPromptForm.get(controlName).hasError(type)) {
         return message;
       }
     }
@@ -95,11 +96,11 @@ export class HostSettingsComponent {
     this.hostService.addPrompt(this.addPromptForm.value).subscribe({
       next: (newId) => {
         this.snackBar.open(
-          `Prompt added with ID: ${newId}`,
+          `Prompt added with ID: ${newId} and text: ${this.addPromptForm.value.text}`,
           null,
           { duration: 2000 }
         );
-        this.router.navigate(['/prompts/', newId]);
+        this.router.navigate(['/prompts/']);
       },
 
       error: error => {

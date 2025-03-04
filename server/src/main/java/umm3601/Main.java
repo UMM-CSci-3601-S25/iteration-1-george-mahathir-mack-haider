@@ -3,7 +3,7 @@ package umm3601;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-import umm3601.host.HostController;
+import umm3601.prompt.PromptController;
 import umm3601.user.UserController;
 
 public class Main {
@@ -62,7 +62,7 @@ public class Main {
       //
       // You can also remove this UserController once you don't need it.
       new UserController(database),
-      new HostController(database)
+      new PromptController(database)
     };
     return controllers;
   }

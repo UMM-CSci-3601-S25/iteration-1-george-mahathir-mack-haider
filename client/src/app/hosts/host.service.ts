@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Host_Settings } from './host-settings';
+import { Prompt } from './prompt';
 // import { get } from 'http';
 
 /**
@@ -31,7 +32,7 @@ export class HostService {
   }
 
 
-  addPrompt(newPrompt: Partial<Host_Settings>): Observable<string> {
+  addPrompt(newPrompt: Partial<Prompt>): Observable<string> {
     return this.httpClient.post<{id: string}>(this.hostUrl, newPrompt).pipe(map(response => response.id));
   }
 }

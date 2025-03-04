@@ -1,4 +1,4 @@
-package umm3601.host;
+package umm3601.prompt;
 
 import org.mongojack.Id;
 import org.mongojack.ObjectId;
@@ -6,7 +6,7 @@ import org.mongojack.ObjectId;
 
 
 @SuppressWarnings({"VisibilityModifier"})
-public class Host {
+public class Prompt {
 
   @ObjectId @Id
   @SuppressWarnings({"MemberName"})
@@ -16,10 +16,10 @@ public class Host {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Host)) {
+    if (!(obj instanceof Prompt)) {
       return false;
     }
-    Host other = (Host) obj;
+    Prompt other = (Prompt) obj;
     return _id.equals(other._id);
   }
 
