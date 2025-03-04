@@ -6,7 +6,7 @@ import { UserListComponent } from './users/user-list.component';
 import { UserProfileComponent } from './users/user-profile.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { HostComponent } from './hosts/host-list.component';
-import { AddPlayerComponent } from './players/player-list.component';
+import { PlayerComponent } from './players/player-list.component';
 import { HostSettingsComponent } from './hosts/host-setting.component';
 import { GameComponent } from './game/game.component';
 
@@ -19,8 +19,7 @@ const routes: Routes = [
   {path: 'host', component: HostComponent, title: 'Host'},
   {path: 'player', component: PlayerComponent, title: 'Player'},
   {path: 'prompts', component: HostSettingsComponent, title: 'Host Settings'},
-
-  {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
+  // {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
 
   {path: 'game', component: GameComponent, title: 'Game'},
   {path: 'game/temporary', component: GameComponent, title: 'Temporary Game'},
