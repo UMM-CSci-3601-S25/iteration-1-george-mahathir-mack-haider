@@ -38,3 +38,4 @@ import { RouterLink } from '@angular/router';
 export class AddPlayerComponent {
 
 }
+//changed from playercompent to addplayercomponent
