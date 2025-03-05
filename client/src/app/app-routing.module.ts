@@ -17,7 +17,7 @@ import { GameComponent } from './game/game.component';
 const routes: Routes = [
   {path: '', component: HomeComponent, title: 'Home'},
   {path: 'host', component: HostComponent, title: 'Host'},
-  {path: 'player', component: PlayerComponent, title: 'Player'},
+  {path: 'player', component: AddPlayerComponent, title: 'Player'},
   {path: 'prompts', component: HostSettingsComponent, title: 'Host Settings'},
   {path: 'host/settings', component: HostSettingsComponent, title: 'Host Settings'},
 
