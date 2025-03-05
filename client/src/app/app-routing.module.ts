@@ -6,7 +6,7 @@ import { UserListComponent } from './users/user-list.component';
 import { UserProfileComponent } from './users/user-profile.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { HostComponent } from './hosts/host-list.component';
-import { PlayerComponent } from './players/player-list.component';
+import { AddPlayerComponent } from './players/player-list.component';
 import { HostSettingsComponent } from './hosts/host-setting.component';
 import { GameComponent } from './game/game.component';
 
