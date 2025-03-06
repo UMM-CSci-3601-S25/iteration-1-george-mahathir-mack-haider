@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HostService } from '../hosts/host.service';
 import { Prompt } from '../hosts/prompt';
 import { NgFor } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -31,6 +32,7 @@ import { NgFor } from '@angular/common';
     MatGridListModule,
     MatInputModule,
     NgFor,
+    MatFormFieldModule,
   ]
 })
 
