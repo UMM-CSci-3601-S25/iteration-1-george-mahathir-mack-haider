@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 //import { RouterLink } from '@angular/router';
@@ -9,6 +9,10 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Response } from './response';
 import { map } from 'rxjs/operators';
+import { MatInputModule } from '@angular/material/input';
+import { HostService } from '../hosts/host.service';
+import { Prompt } from '../hosts/prompt';
+import { NgFor } from '@angular/common';
 
 
 
@@ -24,16 +28,25 @@ import { map } from 'rxjs/operators';
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
+    MatGridListModule,
+    MatInputModule,
+    NgFor,
   ]
 })
 
-export class GameComponent {
+export class GameComponent implements OnInit {
+
 
   readonly hostUrl: string = `${environment.apiUrl}prompts`;
+  prompts: string[] = [];
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private hostService: HostService , private httpClient: HttpClient) {
   }
-
+  ngOnInit(): void {
+    this.hostService.getPrompts().subscribe((data: Prompt[]) => {
+      this.prompts = data.map(prompt => prompt.text); // Adjust according to your prompt structure
+    });
+  }
   generateRandomID(length: number): string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
