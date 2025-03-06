@@ -42,7 +42,7 @@ public class ResponseController implements Controller {
     Response response;
     try {
       response = responseCollection.find(eq("_id", new ObjectId(id))).first();
-    } catch(IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       throw new NotFoundResponse("The requested response was not found");
     }
     if (response == null) {

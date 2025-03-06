@@ -81,6 +81,54 @@ class ResponseControllerSpec {
   }
 
 
+
+
+  @Test
+  void getResponse() throws IOException {
+    Response newResponse = new Response();
+    newResponse.text = "Test Response";
+
+    String newResponseJson = javalinJackson.toJsonString(newResponse, Response.class);
+
+    when(ctx.bodyValidator(Response.class))
+        .thenReturn(new BodyValidator<>(newResponseJson, Response.class,
+            () -> javalinJackson.fromJsonString(newResponseJson, Response.class)));
+
+    responseController.addNewResponse(ctx);
+    verify(ctx).json(mapCaptor.capture());
+
+    verify(ctx).status(HttpStatus.CREATED);
+
+    responseController.getResponse(ctx);
+    verify(ctx).json(mapCaptor.capture());
+
+    verify(ctx).status(HttpStatus.OK);
+  }
+
+  @Test
+  void getResponseById() throws IOException {
+    Response newResponse = new Response();
+    newResponse.text = "Test Response";
+
+    String newResponseJson = javalinJackson.toJsonString(newResponse, Response.class);
+
+    when(ctx.bodyValidator(Response.class))
+        .thenReturn(new BodyValidator<>(newResponseJson, Response.class,
+            () -> javalinJackson.fromJsonString(newResponseJson, Response.class)));
+
+    responseController.addNewResponse(ctx);
+    verify(ctx).json(mapCaptor.capture());
+
+    verify(ctx).status(HttpStatus.CREATED);
+
+    when(ctx.pathParam("id")).thenReturn(mapCaptor.getValue().get("id"));
+
+    responseController.getResponseById(ctx);
+    verify(ctx).json(mapCaptor.capture());
+
+    verify(ctx).status(HttpStatus.OK);
+  }
+
   @Test
   void addNewResponse() throws IOException {
     Response newResponse = new Response();
@@ -103,6 +151,7 @@ class ResponseControllerSpec {
     assertNotNull(addedResponse);
     assertEquals(newResponse.text, addedResponse.get("text"));
   }
+
 
   @Test
   void deleteResponse() throws IOException {
@@ -137,61 +186,5 @@ class ResponseControllerSpec {
     assertEquals(null, deletedResponse);
   }
 
-  @Test
-  void getResponse() throws IOException {
-    Response newResponse = new Response();
-    newResponse.text = "Test Response";
 
-    String newResponseJson = javalinJackson.toJsonString(newResponse, Response.class);
-
-    when(ctx.bodyValidator(Response.class))
-        .thenReturn(new BodyValidator<>(newResponseJson, Response.class,
-            () -> javalinJackson.fromJsonString(newResponseJson, Response.class)));
-
-    responseController.addNewResponse(ctx);
-    verify(ctx).json(mapCaptor.capture());
-
-    verify(ctx).status(HttpStatus.CREATED);
-
-    Document addedResponse = db.getCollection("Responses")
-        .find(new Document("_id", new ObjectId(mapCaptor.getValue().get("id")))).first();
-
-    assertNotNull(addedResponse);
-    assertEquals(newResponse.text, addedResponse.get("text"));
-
-    responseController.getResponse(ctx);
-    verify(ctx).json(mapCaptor.capture());
-
-    verify(ctx).status(HttpStatus.OK);
-  }
-
-  @Test
-  void getResponseById() throws IOException {
-    Response newResponse = new Response();
-    newResponse.text = "Test Response";
-
-    String newResponseJson = javalinJackson.toJsonString(newResponse, Response.class);
-
-    when(ctx.bodyValidator(Response.class))
-        .thenReturn(new BodyValidator<>(newResponseJson, Response.class,
-            () -> javalinJackson.fromJsonString(newResponseJson, Response.class)));
-
-    responseController.addNewResponse(ctx);
-    verify(ctx).json(mapCaptor.capture());
-
-    verify(ctx).status(HttpStatus.CREATED);
-
-    Document addedResponse = db.getCollection("Responses")
-        .find(new Document("_id", new ObjectId(mapCaptor.getValue().get("id")))).first();
-
-    assertNotNull(addedResponse);
-    assertEquals(newResponse.text, addedResponse.get("text"));
-
-    when(ctx.pathParam("id")).thenReturn(mapCaptor.getValue().get("id"));
-
-    responseController.getResponseById(ctx);
-    verify(ctx).json(mapCaptor.capture());
-
-    verify(ctx).status(HttpStatus.OK);
-  }
 }
