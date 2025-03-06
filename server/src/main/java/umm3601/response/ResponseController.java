@@ -37,7 +37,20 @@ public class ResponseController implements Controller {
     ctx.json(responses);
   }
 
-
+  public void getResponseById(Context ctx) {
+    String id = ctx.pathParam("id");
+    Response response;
+    try {
+      response = responseCollection.find(eq("_id", new ObjectId(id))).first();
+    } catch(IllegalArgumentException e) {
+      throw new NotFoundResponse("The requested response was not found");
+    }
+    if (response == null) {
+      throw new NotFoundResponse("The requested response was not found");
+    } else {
+      ctx.json(response);
+    }
+  }
 
   public void addNewResponse(Context ctx) {
 
