@@ -1,5 +1,5 @@
 export interface Game {
-  players: string[];
+  gameId: string;
   prompts: string[];
   rounds: number;
   currentRound: number;
