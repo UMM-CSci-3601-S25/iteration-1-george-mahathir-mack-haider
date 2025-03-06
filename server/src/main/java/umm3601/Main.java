@@ -6,6 +6,7 @@ import com.mongodb.client.MongoDatabase;
 import umm3601.prompt.PromptController;
 import umm3601.response.ResponseController;
 import umm3601.user.UserController;
+import umm3601.player.PlayerController;
 
 public class Main {
 
@@ -64,7 +65,8 @@ public class Main {
       // You can also remove this UserController once you don't need it.
       new UserController(database),
       new PromptController(database),
-      new ResponseController(database)
+      new ResponseController(database),
+      new PlayerController(database)
     };
     return controllers;
   }

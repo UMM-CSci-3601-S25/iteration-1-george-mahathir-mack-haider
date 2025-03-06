@@ -12,7 +12,7 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Add A Prompt Card</mat-label>
-            <input matInput formControlName="text" #message placeholder="placeholder..." required>
+            <input matInput formControlName="text" #message placeholder="add a new prompt" required>
             @if (formControlHasError('text')) {
               <mat-error data-test="textError">
               {{getErrorMessage('text')}}
