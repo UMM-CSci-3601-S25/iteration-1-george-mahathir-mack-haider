@@ -4,32 +4,17 @@
       mat-grid-tile {
         height: 200px !important;
       }
-
     </style>
     <mat-grid-list cols="3" rowHeight="1:1">
-
-      <mat-grid-tile>
-        1
+      <mat-grid-tile *ngFor="let prompt of prompts">
+        <div>
+          {{ prompt }}
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Response</mat-label>
+          <input matInput placeholder="Enter your response">
+        </mat-form-field>
       </mat-grid-tile>
-
-      <mat-grid-tile>
-        2
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        3
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        4
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        5
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        6
-      </mat-grid-tile>
-
-
+    </mat-grid-list>
+  </div>
+</div>

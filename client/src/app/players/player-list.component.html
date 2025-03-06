@@ -2,19 +2,27 @@
   <div class="content">
     <mat-card class="card">
       <mat-card-header>
-        <mat-card-title>Join a Game</mat-card-title>
+        <mat-card-title>Join the Game</mat-card-title>
       </mat-card-header>
+
+
       <mat-card-content>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Join a game">
+          <input matInput placeholder="choose a username">
         </mat-form-field>
+
+        <!-- add more functionality like add user form -->
+
         <div class="button-container">
           <button mat-fab extended color="primary" [routerLink]="['/game/temporary']" routerLinkActive="HostJoinButton">
+
             <mat-icon>add</mat-icon>
             Join
           </button>
         </div>
       </mat-card-content>
+
+
     </mat-card>
     <button mat-fab class="add-user-fab" matTooltip="Go back" matTooltipPosition="left" routerLink="/" style="position: absolute; bottom: 100px; right: 100px;">
       <mat-icon aria-label="go back">subdirectory_arrow_left</mat-icon>
@@ -23,40 +31,4 @@
 </div>
 
 <style>
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    background-color: #e770ff;
-  }
-
-  .content {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 100%;
-  }
-
-  .full-width {
-    width: 100%;
-  }
-
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .add-user-fab {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-  }
 </style>

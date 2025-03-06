@@ -2,6 +2,7 @@ package umm3601.prompt;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 // import static org.junit.jupiter.api.Assertions.assertThrows;
 // import static org.mockito.ArgumentMatchers.any;
 // import static org.mockito.Mockito.mock;
@@ -80,12 +81,11 @@ class PromptControllerSpec {
     promptController = new PromptController(db);
   }
 
-  // @Test
-  // void addsRoutes() {
-  //   Javalin mockServer = mock(Javalin.class);
-  //   hostController.addRoutes(mockServer);
-  //   verify(mockServer).post("/api/prompts", hostController::addNewPrompt);
-  // }
+  @Test
+  void getPrompts() {
+    promptController.getPrompts(ctx);
+    verify(ctx).json(Collections.emptyList());
+  }
 
   @Test
   void addNewPrompt() throws IOException {
@@ -110,20 +110,45 @@ class PromptControllerSpec {
     assertEquals(newPrompt.text, addedPrompt.get("text"));
   }
 
-//   @Test
-//   void addInvalidPrompt() throws IOException {
-//     String invalidPromptJson = "{}";
 
-//     when(ctx.body()).thenReturn(invalidPromptJson);
-//     when(ctx.bodyValidator(Host.class))
-//         .thenReturn(new BodyValidator<>(invalidPromptJson, Host.class,
-//             () -> javalinJackson.fromJsonString(invalidPromptJson, Host.class)));
+  @Test
+  void addNewPromptWithEmptyText() throws IOException {
+    Prompt newPrompt = new Prompt();
+    newPrompt.text = "";
 
-//     ValidationException exception = assertThrows(ValidationException.class, () -> {
-//       hostController.addNewPrompt(ctx);
-//     });
+    String newPromptJson = javalinJackson.toJsonString(newPrompt, Prompt.class);
 
-//     String exceptionMessage = exception.getErrors().get("REQUEST_BODY").get(0).toString();
-//     assertTrue(exceptionMessage.contains("Prompt must have a non-empty value"));
-//   }
+    when(ctx.bodyValidator(Prompt.class))
+        .thenReturn(new BodyValidator<>(newPromptJson, Prompt.class,
+            () -> javalinJackson.fromJsonString(newPromptJson, Prompt.class)));
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      try {
+        promptController.addNewPrompt(ctx);
+      } catch (io.javalin.validation.ValidationException e) {
+        throw new IllegalArgumentException(e);
+      }
+    });
+  }
+
+  @Test
+  void addNewPromptWithNullText() throws IOException {
+    Prompt newPrompt = new Prompt();
+    newPrompt.text = null;
+
+    String newPromptJson = javalinJackson.toJsonString(newPrompt, Prompt.class);
+
+    when(ctx.bodyValidator(Prompt.class))
+        .thenReturn(new BodyValidator<>(newPromptJson, Prompt.class,
+            () -> javalinJackson.fromJsonString(newPromptJson, Prompt.class)));
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      try {
+        promptController.addNewPrompt(ctx);
+      } catch (io.javalin.validation.ValidationException e) {
+        throw new IllegalArgumentException(e);
+      }
+    });
+  }
+
  }

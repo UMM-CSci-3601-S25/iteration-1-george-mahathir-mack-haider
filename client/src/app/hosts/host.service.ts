@@ -27,8 +27,8 @@ export class HostService {
     return this.httpClient.get<Host_Settings[]>(this.hostUrl);
   }
 
-  getPrompts(): Observable<Host_Settings[]> {
-    return this.httpClient.get<Host_Settings[]>(this.hostUrl);
+  getPrompts(): Observable<Prompt[]> {
+    return this.httpClient.get<Prompt[]>(this.hostUrl);
   }
 
 
