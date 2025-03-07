@@ -35,6 +35,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 })
 
 export class HomeComponent {
-
+  title = 'Humanity Against Appels';
 }
 
