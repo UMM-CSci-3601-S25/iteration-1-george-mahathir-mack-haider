@@ -14,7 +14,11 @@
         <!-- add more functionality like add user form -->
 
         <div class="button-container">
-          <button mat-fab extended color="primary" [routerLink]="['/game/temporary']" routerLinkActive="HostJoinButton">
+          <button mat-fab extended color="primary"
+           [routerLink]="['/game/temporary']"
+          routerLinkActive="HostJoinButton"
+          data-test="joinButton"
+          >
 
             <mat-icon>add</mat-icon>
             Join
