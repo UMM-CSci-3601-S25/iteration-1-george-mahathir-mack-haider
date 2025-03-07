@@ -1,50 +1,5 @@
 [
   {
-    "_id": {
-      "$oid": "58af3a600343927e48e8720f"
-    },
-    "text": "______ is a slippery slope that leads to ______."
-  },
-  {
-    "_id": {
-      "$oid": "58af3a600343927e48e87210"
-    },
-    "text": "______: kid-tested, mother-approved."
-  },
-  {
-    "_id": {
-      "$oid": "58af3a600343927e48e87211"
-    },
-    "text": "______: Mwah."
-  },
-  {
-    "_id": {
-      "$oid": "58af3a600343927e48e87212"
-    },
-    "text": "______. High five, bro."
-  },
-  {
-    "_id": {
-      "$oid": "58af3a600343927e48e87213"
-    },
-    "text": "A romantic, candlelit dinner would be incomplete without ______."
-  },
-  {
-    "_id": {
-      "$oid": "58af3a600343927e48e87214"
-    },
-    "text": "A successful job interview begins with a firm handshake and ends with ______."
-  },
-  {
-    "_id": {
-      "$oid": "58af3a600343927e48e87215"
-    },
-    "text": "And the Academy Award for ______ goes to ______."
-  },
-  {
-    "_id": {
-      "$oid": "58af3a600343927e48e87216"
-    },
-    "text": "And today’s soup is Cream of ______."
+
   }
 ]
